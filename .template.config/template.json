@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Mark Hamilton",
+  "classifications": ["Web", "React", "Typescript", "Lambda", "AWS"],
+  "name": "React MVC on Lambda",
+  "identity": "ReactMVCLambda",
+  "groupIdentity": "ReactMVCLambda",
+  "shortName": "RML",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "ez-lambda",
+  "preferNameDirectory": true
+}
