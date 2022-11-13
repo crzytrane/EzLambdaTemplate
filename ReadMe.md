@@ -1,6 +1,6 @@
 # Usage
 
-- Clone the repo
+- Clone the repo `git clone https://github.com/crzytrane/EzLambdaTemplate`
 - Install the template using `dotnet new install ./EzLambdaTemplate`
 - Use the template `dotnet new rml --name MyApp`
 - Now we fix up the ClientApp packages
