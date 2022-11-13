@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ez_lambda.Controllers;
+namespace EzLambda.Controllers;
 
 [ApiController]
 [Route("[controller]")]

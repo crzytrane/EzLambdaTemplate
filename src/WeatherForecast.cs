@@ -1,4 +1,4 @@
-namespace ez_lambda;
+namespace EzLambda;
 
 public class WeatherForecast
 {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import "source-map-support/register";
 import * as cdk from "aws-cdk-lib";
-import { EzLambdaStack } from "../lib/ez-lambda-stack";
+import { EzLambdaStack } from "../lib/EzLambda-stack";
 
 const app = new cdk.App();
 new EzLambdaStack(app, "EzLambdaStack", {

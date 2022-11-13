@@ -1,8 +1,8 @@
 {
-  "name": "ez-lambda-iac",
+  "name": "EzLambda-iac",
   "version": "0.1.0",
   "bin": {
-    "ez-lambda-iac": "infra/bin/ez-lambda-iac.js"
+    "EzLambda-iac": "infra/bin/EzLambda-iac.js"
   },
   "scripts": {
     "build": "tsc",

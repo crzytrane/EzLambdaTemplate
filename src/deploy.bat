@@ -1,1 +1,1 @@
-dotnet lambda deploy-function ez_lambda -frun dotnet6 -fh ez-lambda
+dotnet lambda deploy-function EzLambda -frun dotnet6 -fh EzLambda

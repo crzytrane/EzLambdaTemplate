@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts infra/bin/ez-lambda-iac.ts",
+  "app": "npx ts-node --prefer-ts-exts infra/bin/EzLambda-iac.ts",
   "watch": {
     "include": ["**"],
     "exclude": [

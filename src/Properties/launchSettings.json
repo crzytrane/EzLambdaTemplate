@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "ez_lambda": {
+    "EzLambda": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7246;http://localhost:5068",

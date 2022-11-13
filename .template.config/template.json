@@ -10,6 +10,16 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "ez-lambda",
-  "preferNameDirectory": true
+  "sourceName": "EzLambda",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./"
+    },
+    {
+      "source": "./infra/bin/",
+      "target": "./infra/bin/"
+    }
+  ]
 }

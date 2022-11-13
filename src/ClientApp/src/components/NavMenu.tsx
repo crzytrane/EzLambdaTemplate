@@ -25,7 +25,7 @@ export const NavMenu = () => {
                 light
             >
                 <NavbarBrand tag={Link} to="/">
-                    ez_lambda
+                    EzLambda
                 </NavbarBrand>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                 <Collapse

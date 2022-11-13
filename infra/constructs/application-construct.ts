@@ -39,7 +39,7 @@ export class ApplicationConstruct extends Construct {
 
     this.handler = new lambda.Function(this, `${id}_lambda`, {
       code: sourcePath,
-      handler: "ez-lambda",
+      handler: "EzLambda",
       runtime: Runtime.DOTNET_6,
       environment: {
         table_1: table1.tableName,
