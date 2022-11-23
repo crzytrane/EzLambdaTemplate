@@ -15,9 +15,15 @@ export type Domain = {
   zone: ApplicationZone;
 };
 
+export type OIDC = {
+  authority: string;
+  client: string;
+};
+
 export type ApplicationConstructProps = {
   domain?: Domain;
   applicationPath: string;
+  oidc?: OIDC;
 };
 
 export class ApplicationConstruct extends Construct {
@@ -42,9 +48,20 @@ export class ApplicationConstruct extends Construct {
       handler: "EzLambda",
       runtime: Runtime.DOTNET_6,
       environment: {
-        table_1: table1.tableName,
+        EzLambda_table_1: table1.tableName,
       },
     });
+
+    if (props.oidc?.authority && props.oidc?.client) {
+      this.handler.addEnvironment(
+        "EzLambda_auth__oidc__authority",
+        props.oidc?.authority
+      );
+      this.handler.addEnvironment(
+        "EzLambda_auth__oidc__client",
+        props.oidc?.client
+      );
+    }
 
     const lambdaUrl = new lambda.FunctionUrl(this, `${id}_url`, {
       function: this.handler,
