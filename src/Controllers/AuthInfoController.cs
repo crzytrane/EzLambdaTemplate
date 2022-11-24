@@ -7,23 +7,30 @@ namespace EzLambda.Controllers;
 [Route("api/[controller]")]
 public class AuthInfoController : ControllerBase
 {
+    private readonly ILogger<AuthInfoController> _logger;
+    private readonly IConfiguration _configuration;
+
     public AuthInfoController(
+        ILogger<AuthInfoController> logger,
+        IConfiguration configuration
         )
     {
+        _logger = logger;
+        _configuration = configuration;
     }
 
     [HttpGet]
     public AuthInfo Get()
     {
-        // var authority = _configuration.GetValue<string>("auth:oidc:authority");
-        // var clientId = _configuration.GetValue<string>("auth:oidc:clientid");
+        var authority = _configuration.GetValue<string>("auth:oidc:authority");
+        var clientId = _configuration.GetValue<string>("auth:oidc:clientid");
 
-        // _logger.LogInformation("Authority {authority}, ClientId {clientId}", authority, clientId);
+        _logger.LogInformation("Authority {authority}, ClientId {clientId}", authority, clientId);
 
         return new AuthInfo()
         {
-            Authority = "",//authority,
-            ClientId = "",//clientId
+            Authority = authority,
+            ClientId = clientId
         };
     }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from 'react-oidc-context';
 
 type Forecast = {
     date: string;
@@ -11,8 +12,20 @@ export const FetchData = () => {
     const [forecasts, setForecasts] = useState<Forecast[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const auth = useAuth();
+
     useEffect(() => {
-        fetch('weatherforecast').then((r) =>
+        auth.signinRedirect({
+            redirect_uri: 'https://localhost:44407/callback',
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log('authenticated', auth.isAuthenticated);
+    }, [auth.isAuthenticated]);
+
+    useEffect(() => {
+        fetch('api/weatherforecast').then((r) =>
             r.json().then((data) => {
                 setForecasts(data);
                 setLoading(false);
