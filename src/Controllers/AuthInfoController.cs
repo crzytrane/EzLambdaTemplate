@@ -23,9 +23,7 @@ public class AuthInfoController : ControllerBase
     public AuthInfo Get()
     {
         var authority = _configuration.GetValue<string>("auth:oidc:authority");
-        var clientId = _configuration.GetValue<string>("auth:oidc:clientid");
-
-        _logger.LogInformation("Authority {authority}, ClientId {clientId}", authority, clientId);
+        var clientId = _configuration.GetValue<string>("auth:oidc:client_id");
 
         return new AuthInfo()
         {

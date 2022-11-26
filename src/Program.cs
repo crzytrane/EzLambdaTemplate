@@ -1,4 +1,3 @@
-using EzLambda;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,13 +16,23 @@ var authenticationBuilder = builder.Services.AddAuthentication(options =>
 
 authenticationBuilder.AddJwtBearer(options =>
 {
-    var authority = builder.Configuration["auth:oidc:authority"];
-    options.Authority = $"https://{authority}";
+    var authority = builder.Configuration.GetValue<string>("auth:oidc:authority");
+    var userPoolRegion = builder.Configuration.GetValue<string>("auth:oidc:user_pool_region");
+    var userPoolId = builder.Configuration.GetValue<string>("auth:oidc:user_pool_id");
+    var clientId = builder.Configuration.GetValue<string>("auth:oidc:client_id");
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
+        ValidIssuer = $"https://cognito-idp.{userPoolRegion}.amazonaws.com/{userPoolId}",
         ValidateIssuerSigningKey = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true,
+        ValidAudience = $"{clientId}",
         ValidateAudience = false
     };
+
+    options.MetadataAddress = $"https://cognito-idp.{userPoolRegion}.amazonaws.com/{userPoolId}/.well-known/openid-configuration";
+
 });
 builder.Services.AddAuthorization(options =>
 {
@@ -39,7 +48,7 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    //     app.UseExceptionHandler("/Error");
+    // app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
 if (app.Environment.IsDevelopment())
